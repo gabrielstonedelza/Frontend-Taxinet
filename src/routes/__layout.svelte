@@ -148,16 +148,14 @@
 						<a href="/">Home</a>
 					</div>
 					<div class="navbarlink">
-						<a href="/explore">Explore</a>
-					</div>
-					<div class="navbarlink">
-						<a href="/movies" passHref> Movies </a>
-					</div>
-					<div class="navbarlink">
-						<a href="/gallery" passHref> Gallery </a>
+						<a href="/services">Services</a>
 					</div>
 					<div class="navbarlink">
 						<a href="/about" passHref> About </a>
+					</div>
+		
+					<div class="navbarlink">
+						<a href="/login" passHref> Login </a>
 					</div>
 				</div>
 			</div>
@@ -465,6 +463,17 @@
 					color: #fff;
 					font-size: 20px;
 					padding: 20px;
+					a {
+						color: #FFC700;
+						transition: 1s ease;
+						&:hover {
+							color: #c8a461;
+							border-radius: 10px;
+							padding: 5px;
+							border: solid 1px #c8a461;
+							background-color: rgba(105, 105, 105, 0.462);
+						}
+					}
 				}
 			}
 			.sociallinks {
