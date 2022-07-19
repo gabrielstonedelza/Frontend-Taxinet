@@ -109,6 +109,10 @@
             .services-box1,
 			.services-box2{
                 flex-direction: column;
+                justify-content: center;
+                .box{
+                    width: 100%;
+                }
             }
         }
 
