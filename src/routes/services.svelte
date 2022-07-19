@@ -75,6 +75,7 @@
 				display: flex;
 				gap: 1rem;
 				justify-content: center;
+                align-items: center;
 				.box {
 					cursor: pointer;
 					display: flex;
@@ -83,18 +84,13 @@
 					gap: 1rem;
 					width: 400px;
 					height: 300px;
-                    overflow: hidden;
+
 					img {
-                        object-fit: cover;
+						object-fit: cover;
 						width: 100%;
 						height: 100%;
 						border-radius: 10px;
-						display: block;
-						transition: 1s ease;
-						&:hover {
-							transform: scale(1.25);
-                            border-radius: 10px;
-						}
+					
 					}
 					h3 {
 						text-align: center;
@@ -104,18 +100,18 @@
 		}
 	}
 
-    @media only screen and (max-width: 600px){
-        .service-container{
-            .services-box1,
-			.services-box2{
-                flex-direction: column;
-                justify-content: center;
-                .box{
-                    width: 100%;
-                }
-            }
-        }
-
-    }
-    @media only screen and (max-width: 768px){}
+	@media only screen and (max-width: 600px) {
+		.service-container {
+			.services-box1,
+			.services-box2 {
+				flex-direction: column;
+				justify-content: center;
+				.box {
+					width: 100%;
+				}
+			}
+		}
+	}
+	@media only screen and (max-width: 768px) {
+	}
 </style>
