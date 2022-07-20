@@ -1,5 +1,5 @@
 <script>
-    import { token } from "./stores"
+	import { token } from './stores';
 	import { fly } from 'svelte/transition';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
@@ -13,39 +13,36 @@
 	let hasUsernameError = false;
 	let isPosting = false;
 
-
 	const handleSubmitFile = async () => {
-        isPosting = true;
-        setTimeout(function(){
-            isPosting = false;
-        },900)
-		const apiUrl = 'https://taxinetghana.xyz/auth/token/login/';
-		axios({
-			method: 'POST',
-			url: apiUrl,
-			data: {
-				username: username,
-				password: password
-			},
-			headers: { 'Content-Type': 'multipart/form-data' }
-		})
-			.then((response) => {
-				goto('/dashboard');
-				localStorage.setItem('token', response.data['auth_token'])
-                token.set(response.data['auth_token']) 
-			})
-			.catch((error) => {
-				if (error.response) {
-					if (error.response.data['non_field_errors']) {
-						hasPasswordError = true;
-						passwordError = `Sorry 😢,${error.response.data['non_field_errors']}`;
-					}
-					console.log(error.response);
-					// if (error.response.data["email"]) {
-					//     toast.error(`${error.response.data["email"]}`);
-					// }
-				}
-			});
+		// isPosting = true;
+		// setTimeout(function () {
+		// 	isPosting = false;
+		// }, 900);
+		// const apiUrl = 'https://taxinetghana.xyz/auth/token/login/';
+		// axios({
+		// 	method: 'POST',
+		// 	url: apiUrl,
+		// 	data: {
+		// 		username: username,
+		// 		password: password
+		// 	},
+		// 	headers: { 'Content-Type': 'multipart/form-data' }
+		// })
+		// 	.then((response) => {
+		// 		goto('/dashboard');
+		// 		localStorage.setItem('token', response.data['auth_token']);
+		// 		token.set(response.data['auth_token']);
+		// 	})
+		// 	.catch((error) => {
+		// 		if (error.response) {
+		// 			if (error.response.data['non_field_errors']) {
+		// 				hasPasswordError = true;
+		// 				passwordError = `Sorry 😢,${error.response.data['non_field_errors']}`;
+		// 			}
+		// 			console.log(error.response);
+					
+		// 		}
+		// 	});
 	};
 </script>
 
@@ -91,7 +88,7 @@
 				<p>{passwordError}</p>
 			</div>
 		{/if}
-		{#if  isPosting}
+		{#if isPosting}
 			<Spinner />
 		{:else}
 			<button class="form__button">Login</button>
@@ -138,7 +135,6 @@
 		align-items: center;
 		color: #ffc700;
 		padding: 20px;
-		
 
 		.form {
 			box-shadow: 0px 16px 48px rgba(0, 0, 0, 0.22);

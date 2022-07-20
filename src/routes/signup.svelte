@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
+	import Spinner from '../components/Spinner.svelte';
 	let username;
 	let password;
 	let confirmPassword;
@@ -19,68 +20,74 @@
 	let hasPhoneError = false;
 	let fullnameError = '';
 	let hasFullNameError = false;
-    const handleErrorContainer = () => {
+	let isPosting = false;
+	const handleErrorContainer = () => {
 		hasErrors = false;
 	};
 
 	const handleSubmitFile = async () => {
-		const apiUrl = 'https://taxinetghana.xyz/auth/users/';
-		axios({
-			method: 'POST',
-			url: apiUrl,
-			data: {
-				username: username,
-				email: email,
-				phone_number: phone,
-				full_name: fullname,
-				password: password,
-				re_password: confirmPassword
-			},
-			headers: { 'Content-Type': 'multipart/form-data' }
-		})
-			.then((response) => {
-				goto('/login');
-			})
-			.catch((error) => {
-				if (error.response) {
-					if (error.response.data['username']) {
-						hasUsernameError = true;
-						usernameError = `Sorry 😢,${error.response.data['username']}`;
-					}
-					if (!error.response.data['username']) {
-						hasUsernameError = false;
-						usernameError = '';
-					}
-					if (error.response.data['full_name']) {
-						hasErrors = true;
-						hasFullNameError = true;
-						fullnameError = `Sorry 😢,${error.response.data['full_name']}`;
-					}
-					if (!error.response.data['full_name']) {
-						hasFullNameError = false;
-						fullnameError = '';
-					}
+		// isPosting = true;
+		// setTimeout(function () {
+		// 	isPosting = false;
+		// }, 900);
+		// const apiUrl = 'https://taxinetghana.xyz/auth/users/';
+		// axios({
+		// 	method: 'POST',
+		// 	url: apiUrl,
+		// 	data: {
+		// 		username: username,
+		// 		email: email,
+		// 		phone_number: phone,
+		// 		full_name: fullname,
+		// 		password: password,
+		// 		re_password: confirmPassword
+		// 	},
+		// 	headers: { 'Content-Type': 'multipart/form-data' }
+		// })
+		// 	.then((response) => {
+		// 		goto('/login');
+		// 	})
+		// 	.catch((error) => {
+		// 		if (error.response) {
+		// 			console.log(error.response);
+		// 			if (error.response.data['username']) {
+		// 				hasUsernameError = true;
+		// 				usernameError = `Sorry,${error.response.data['username']}`;
+		// 			}
+		// 			if (!error.response.data['username']) {
+		// 				hasUsernameError = false;
+		// 				usernameError = '';
+		// 			}
+		// 			if (error.response.data['full_name']) {
+		// 				hasErrors = true;
+		// 				hasFullNameError = true;
+		// 				fullnameError = `Sorry,${error.response.data['full_name']}`;
+		// 			}
+		// 			if (!error.response.data['full_name']) {
+		// 				hasFullNameError = false;
+		// 				fullnameError = '';
+		// 			}
 
-					if (error.response.data['email']) {
-						hasErrors = true;
-						hasEmailError = true;
-						emailError = `Sorry 😢,${error.response.data['email']}`;
-					}
-					if (!error.response.data['email']) {
-						hasEmailError = false;
-						emailError = '';
-					}
-					if (error.response.data['phone_number']) {
-						hasErrors = true;
-						hasPhoneError = true;
-						phoneError = `Sorry 😢,${error.response.data['phone_number']}`;
-					}
-					if (!error.response.data['phone_number']) {
-						hasPhoneError = false;
-						phoneError = '';
-					}
-				}
-			});
+		// 			if (error.response.data['email']) {
+		// 				hasErrors = true;
+		// 				hasEmailError = true;
+		// 				emailError = `Sorry,${error.response.data['email']}`;
+		// 			}
+		// 			if (!error.response.data['email']) {
+		// 				hasEmailError = false;
+		// 				emailError = '';
+		// 			}
+		// 			if (error.response.data['phone_number']) {
+		// 				hasErrors = true;
+		// 				hasPhoneError = true;
+		// 				phoneError = `Sorry,${error.response.data['phone_number']}`;
+		// 			}
+		// 			if (!error.response.data['phone_number']) {
+		// 				hasPhoneError = false;
+		// 				phoneError = '';
+		// 			}
+		// 		}
+		// 	});
 	};
 </script>
 
@@ -93,21 +100,6 @@
 	in:fly={{ y: 50, duration: 500, delay: 500 }}
 	out:fly={{ duration: 500 }}
 >
-	{#if hasErrors}
-		<div class="error-container">
-			<div class="error-box">
-				<div class="errors">
-					{#if hasUsernameError}
-						<h3>Username: {usernameError}</h3>
-					{/if}
-					{#if hasEmailError}
-						<h3>Email: {emailError}</h3>
-					{/if}
-				</div>
-				<p on:click={handleErrorContainer}>X</p>
-			</div>
-		</div>
-	{/if}
 	<form class="form" on:submit|preventDefault={handleSubmitFile}>
 		<h1 class="form__title">Sign Up</h1>
 		<div class="form__group">
@@ -183,12 +175,38 @@
 			/>
 			<label for="confirmpassword" class="form__label">Confirm Password</label>
 		</div>
-		{#if hasPasswordError}
-			<div class="full_error">
-				<p>{passwordError}</p>
-			</div>
+		{#if hasErrors}
+			{#if hasPasswordError}
+				<div class="full_error">
+					<p>{passwordError}</p>
+				</div>
+			{/if}
+			{#if hasUsernameError}
+				<div class="full_error">
+					<p>Username: {usernameError}</p>
+				</div>
+			{/if}
+			{#if hasEmailError}
+				<div class="full_error">
+					<p>Email: {emailError}</p>
+				</div>
+			{/if}
+			{#if hasFullNameError}
+				<div class="full_error">
+					<p>Full Name: {fullnameError}</p>
+				</div>
+			{/if}
+			{#if hasPhoneError}
+				<div class="full_error">
+					<p>Phone Number: {phoneError}</p>
+				</div>
+			{/if}
 		{/if}
-		<button class="form__button">Sign Up</button>
+		{#if isPosting}
+			<Spinner />
+		{:else}
+			<button class="form__button">Sign Up</button>
+		{/if}
 		<br />
 		<div class="noaccounts">
 			<p>Already have an account?</p>
@@ -231,33 +249,6 @@
 		align-items: center;
 		color: #ffc700;
 		padding: 20px;
-
-        .error-container {
-		position: fixed;
-		margin-top: 5px;
-		padding: 10px;
-		z-index: 1000;
-		background: rgba(0, 0, 0, 0.8);
-		border-top-right-radius: 20px;
-		border-bottom-right-radius: 20px;
-		transition: 2s ease;
-		.error-box {
-			display: flex;
-			gap: 1rem;
-			.errors {
-				h3 {
-					color: red;
-					font-size: 15px;
-				}
-			}
-			p {
-				color: white;
-				font-size: 25px;
-				cursor: pointer;
-				font-weight: bold;
-			}
-		}
-	}
 
 		.form {
 			width: 40rem;
