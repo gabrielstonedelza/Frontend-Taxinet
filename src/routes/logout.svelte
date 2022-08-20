@@ -2,33 +2,29 @@
 	import { fly } from 'svelte/transition';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
-	import { token } from '../routes/stores';
 	import Spinner from '../components/Spinner.svelte';
 	let isPosting = false;
+	import Cookies from 'js-cookie'
 
-	let tokenValue;
-	token.subscribe((value) => {
-		tokenValue = value;
-	});
 
 	const handleLogout = async () => {
 		isPosting = true;
 		setTimeout(function () {
 			isPosting = false;
 		}, 900);
-		const logoutUrl = 'https://taxinetghana.xyz/auth/token/logout';
+		const logoutUrl = 'https://taxinetghana.xyz/auth/token/logout/';
 		axios({
 			method: 'POST',
 			url: logoutUrl,
 			headers: {
 				'Content-Type': 'multipart/form-data',
-				Authorization: `Token ${tokenValue}`
+				'Accept': 'application/json',
+				'Authorization': `Token ${Cookies.get('token')}`
 			}
 		})
 			.then(function (response) {
+				Cookies.remove('token')
 				goto('/');
-				token.set('');
-				localStorage.removeItem('token');
 			})
 			.catch((error) => {
 				if (error.response) {

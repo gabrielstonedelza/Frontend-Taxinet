@@ -1,9 +1,10 @@
 <script>
-	import { token } from './stores';
 	import { fly } from 'svelte/transition';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
 	import Spinner from '../components/Spinner.svelte';
+	import Cookies from 'js-cookie';
+	import Header from '../components/Header.svelte';
 
 	let username;
 	let password;
@@ -14,35 +15,35 @@
 	let isPosting = false;
 
 	const handleSubmitFile = async () => {
-		// isPosting = true;
-		// setTimeout(function () {
-		// 	isPosting = false;
-		// }, 900);
-		// const apiUrl = 'https://taxinetghana.xyz/auth/token/login/';
-		// axios({
-		// 	method: 'POST',
-		// 	url: apiUrl,
-		// 	data: {
-		// 		username: username,
-		// 		password: password
-		// 	},
-		// 	headers: { 'Content-Type': 'multipart/form-data' }
-		// })
-		// 	.then((response) => {
-		// 		goto('/dashboard');
-		// 		localStorage.setItem('token', response.data['auth_token']);
-		// 		token.set(response.data['auth_token']);
-		// 	})
-		// 	.catch((error) => {
-		// 		if (error.response) {
-		// 			if (error.response.data['non_field_errors']) {
-		// 				hasPasswordError = true;
-		// 				passwordError = `Sorry 😢,${error.response.data['non_field_errors']}`;
-		// 			}
-		// 			console.log(error.response);
-					
-		// 		}
-		// 	});
+		isPosting = true;
+		setTimeout(function () {
+			isPosting = false;
+		}, 2500);
+		const apiUrl = 'https://taxinetghana.xyz/auth/token/login/';
+		axios({
+			method: 'POST',
+			url: apiUrl,
+			data: {
+				username: username,
+				password: password
+			},
+			headers: { 'Content-Type': 'multipart/form-data' }
+		})
+			.then((response) => {
+				goto('/dashboard');
+
+				Cookies.set('token', response.data['auth_token']);
+				localStorage.setItem('token', response.data['auth_token']);
+			})
+			.catch((error) => {
+				if (error.response) {
+					if (error.response.data['non_field_errors']) {
+						hasPasswordError = true;
+						passwordError = `Sorry 😢,${error.response.data['non_field_errors']}`;
+					}
+					console.log(error.response);
+				}
+			});
 	};
 </script>
 
@@ -94,10 +95,7 @@
 			<button class="form__button">Login</button>
 		{/if}
 		<br />
-		<div class="noaccounts">
-			<p>Don't have an account?</p>
-			<a href="/signup">Sign Up</a>
-		</div>
+		
 	</form>
 </section>
 

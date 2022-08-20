@@ -1,11 +1,8 @@
 <script>
-	import { token } from '../routes/stores';
+	
 	import androidPic from '../assets/images/icons/google-play.png';
 	import appStorePic from '../assets/images/icons/app-store.png';
-	let tokenValue;
-	token.subscribe((value) => {
-		tokenValue = value;
-	});
+
 </script>
 
 <section class="about-scheduling">

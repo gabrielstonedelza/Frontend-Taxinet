@@ -1,0 +1,21 @@
+<script>
+	export let driversInventories;
+	import InventoriesCard from "./InventoriesCard.svelte"
+	import { fly } from 'svelte/transition';
+</script>
+
+<div
+	class="passengers-lists-container"
+	in:fly={{ y: 50, duration: 500, delay: 500 }}
+	out:fly={{ duration: 500 }}
+>
+	{#each driversInventories as inventory}
+    <div class="box">
+        <InventoriesCard {inventory} />
+    </div>
+	{/each}
+</div>
+
+<style lang="scss">
+	@import '../../styles/constant';
+</style>
