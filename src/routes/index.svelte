@@ -1,6 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 	import { fly } from 'svelte/transition';
 	import VideoShowcase from '../components/HomeShowcase.svelte';
 	import AboutScheduling from '../components/Aboutscheduling.svelte';

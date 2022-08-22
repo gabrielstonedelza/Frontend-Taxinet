@@ -19,11 +19,35 @@
 	let assignedMessage = '';
 	let unAssignedMessage = '';
 
+	const handleAddToAssignedDrivers = async (driverId) => {
+		isPosting = true;
+		setTimeout(function () {
+			isPosting = false;
+		}, 1500);
+		const apiUrl = `https://taxinetghana.xyz/admin_assign_request_to_driver/`;
+		axios({
+			method: 'POST',
+			url: apiUrl,
+			data: {
+				driver: driverId,
+				ride: detailId
+			},
+			headers: { 'Content-Type': 'multipart/form-data' }
+		})
+			.then((response) => {
+				isAssigned = true;
+			})
+			.catch((error) => {
+				console.log(error.response);
+			});
+	};
+
 	const handleAssignToDriver = async (driverId) => {
 		isPosting = true;
 		setTimeout(function () {
 			isPosting = false;
 		}, 1500);
+		handleAddToAssignedDrivers(driverId);
 		const apiUrl = `https://taxinetghana.xyz/admin_update_requested_ride/${slug}/`;
 		axios({
 			method: 'PUT',
@@ -37,15 +61,8 @@
 		})
 			.then((response) => {
 				isAssigned = true;
-				// goto(`/schedule/${slug}`);
-				// redirect(`/schedule/${slug}`)
 			})
 			.catch((error) => {
-				// if (error.response) {
-				//   if (error.response.data["non_field_errors"]) {
-				//     toast.error(`Sorry 😢,${error.response.data["non_field_errors"]}`);
-				//   }
-				// }
 				console.log(error.response);
 			});
 	};
@@ -69,15 +86,8 @@
 			.then((response) => {
 				isUnAssigned = true;
 				unAssignedMessage = 'Driver was unassigned.This will take a minute to kick in.';
-				// goto(`/schedule/${slug}`);
-				// redirect(`/schedule/${slug}`)
 			})
 			.catch((error) => {
-				// if (error.response) {
-				//   if (error.response.data["non_field_errors"]) {
-				//     toast.error(`Sorry 😢,${error.response.data["non_field_errors"]}`);
-				//   }
-				// }
 				console.log(error.response);
 			});
 	};

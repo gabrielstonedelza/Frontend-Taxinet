@@ -20,4 +20,11 @@
 
 <style lang="scss">
 	@import '../../styles/constant';
+	.passengers-lists-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1rem;
+		.box {
+		}
+	}
 </style>

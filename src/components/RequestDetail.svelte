@@ -47,7 +47,7 @@
 	const closeAssignPage = () => {
 		isAssignDriverPage = false;
 	};
-	console.log(sStatus);
+	
 </script>
 
 <svelte:head>
@@ -132,8 +132,7 @@
 
 <style lang="scss">
 	@import '../styles/constant';
-	.detailhome {
-	}
+	
 	.detailback {
 		@include setBackground;
 		.detailcontainer {

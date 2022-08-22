@@ -1,6 +1,6 @@
 <script>
 	export let driversInventories;
-	import InventoriesCard from "./InventoriesCard.svelte"
+	import InventoriesCard from './InventoriesCard.svelte';
 	import { fly } from 'svelte/transition';
 </script>
 
@@ -10,12 +10,21 @@
 	out:fly={{ duration: 500 }}
 >
 	{#each driversInventories as inventory}
-    <div class="box">
-        <InventoriesCard {inventory} />
-    </div>
+		<div class="box">
+			<InventoriesCard {inventory} />
+		</div>
 	{/each}
 </div>
 
+
 <style lang="scss">
 	@import '../../styles/constant';
+	.passengers-lists-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		justify-content:center;
+		gap: 1rem;
+		.box {
+		}
+	}
 </style>

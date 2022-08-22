@@ -33,7 +33,14 @@
 
 <section class="all-schedules">
 	<div class="addandheader">
-		<img src={addButton} alt="" style="width:40px; height:40px;cursor:pointer;" title="Add to wallet"/>
+		<a sveltekit:prefetch sveltekit:noscroll href="/passengersandwallets">
+			<img
+				src={addButton}
+				alt=""
+				style="width:40px; height:40px;cursor:pointer;"
+				title="Add to wallet"
+			/>
+		</a>
 		<h3>Passengers Wallets</h3>
 	</div>
 	<div class="schedules-container">
@@ -52,7 +59,7 @@
 		gap: 2rem;
 		width: 100%;
 		padding-top: 30px;
-		.addandheader{
+		.addandheader {
 			display: flex;
 			gap: 2rem;
 			justify-content: center;

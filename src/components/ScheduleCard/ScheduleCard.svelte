@@ -3,7 +3,7 @@
 </script>
 
 <div class="schedule-card">
-	<a sveltekit:prefetch sveltekit:noscroll href={'/schedule/' + schedule.slug}>
+	<a  sveltekit:noscroll href={'/schedule/' + schedule.slug}>
 		<div class="card">
 			<div class="header-read-status">
 				<h3>{schedule.schedule_title}</h3>

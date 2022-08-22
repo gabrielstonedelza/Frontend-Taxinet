@@ -138,15 +138,12 @@
 		const driversInventories = await latestInventories.json();
 
 		// inventories today
-		const inventoriesToday = await fetch(
-			'https://taxinetghana.xyz/admin_get_inventories_today/',
-			{
-				headers: {
-					'content-type': 'application/json',
-					accept: 'application/json'
-				}
+		const inventoriesToday = await fetch('https://taxinetghana.xyz/admin_get_inventories_today/', {
+			headers: {
+				'content-type': 'application/json',
+				accept: 'application/json'
 			}
-		);
+		});
 		const todaysInventories = await inventoriesToday.json();
 
 		// passengers wallets
@@ -185,6 +182,7 @@
 </script>
 
 <script>
+	import { browser } from '$app/env';
 	import Header from '../components/Header.svelte';
 	import DashboardHeader from '../components/DashboardHeader.svelte';
 	export let passengerData;
@@ -205,6 +203,10 @@
 	export let walletRequest;
 
 	import DashboardData1 from '../components/DashboardData1.svelte';
+
+	setTimeout(function () {
+		browser && window.location.reload(true)
+	}, 30000);
 </script>
 
 <svelte:head>
@@ -212,16 +214,36 @@
 </svelte:head>
 <DashboardHeader />
 
-<section class="dashboardback" > 
-	<DashboardData1 {usersData}  {passengerData} {driverData} {investorsData} {latestData} {pendingData} {reviewingData} {activeData} {cancelledData} {onetimeData} {weeklyData} {daysData} {dailyData} {driversInventories} {todaysInventories} {walletRequest}/>
+<section class="dashboardback">
+	<DashboardData1
+		{usersData}
+		{passengerData}
+		{driverData}
+		{investorsData}
+		{latestData}
+		{pendingData}
+		{reviewingData}
+		{activeData}
+		{cancelledData}
+		{onetimeData}
+		{weeklyData}
+		{daysData}
+		{dailyData}
+		{driversInventories}
+		{todaysInventories}
+		{walletRequest}
+	/>
 </section>
 
 <style lang="scss">
 	.dashboardback {
-		background: url('../assets/images/Animated1.svg');
-		background-size: cover;
-		background-position: center;
-		background-attachment: fixed;
+		background-color: #ff3cac;
+		background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+
+		// background: url('../assets/images/6455.png');
+		// background-size: cover;
+		// background-position: center;
+		// background-attachment: fixed;
 		width: 100%;
 		height: 100%;
 		position: fixed;

@@ -1,11 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ibarra Real Nova',monospace,Arial, Helvetica, sans-serif;
-    text-decoration: none;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Ibarra Real Nova', monospace, Arial, Helvetica, sans-serif;
+	text-decoration: none;
 }
-
 
 $main-color: #ffd703;
 $primary-color: #fff;
@@ -13,7 +12,7 @@ $default-color: #000;
 
 $border: 1px solid rgba(255, 255, 255, 0.3);
 $background: rgba(255, 255, 255, 0.2);
-$box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+$box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 $backdrop-filter: blur(5px);
 
 $clr-primary: #18ffff;
@@ -30,64 +29,63 @@ $clr-bg: #060b23;
 $radius: 1rem;
 
 @mixin setBackground() {
-  background: url("../assets/images/Animated1.svg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  overflow-y: auto;
-  overflow-x: hidden;
+	background-color: #ff3cac;
+	background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 @mixin setLeftMargin() {
-  margin-left: 270px;
-  padding: 20px;
-  padding-top: 70px;
+	margin-left: 270px;
+	padding: 20px;
+	padding-top: 70px;
 }
 
 @mixin setGlass() {
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  color: white;
-  padding: 10px;
-  // &:hover {
-  //   background: rgba(255, 255, 255, 0.461);
-  // }
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	box-shadow: $box-shadow;
+	backdrop-filter: blur(5px);
+	color: white;
+	padding: 10px;
+	transition: all 300ms ease;
+	&:hover{
+		box-shadow: none;
+	}
 }
 
-@mixin setLink(){
-  padding-left:10px;
-  padding-right: 10px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow:$box-shadow;
-  font-weight: bold;
-  background-color:rgba(255, 255, 255, 0.2);
-  &:hover{
-    background: rgba(255, 255, 255, 0.461);
-  }
+@mixin setLink() {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: $box-shadow;
+	font-weight: bold;
+	background-color: rgba(255, 255, 255, 0.2);
+	&:hover {
+		background: rgba(255, 255, 255, 0.461);
+	}
 }
-@mixin setButton(){
-  border: none;
-  outline: none;
-  padding-left:10px;
-  padding-right: 10px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow:$box-shadow;
-  color: white;
-  font-weight: bold;
-  background-color:rgba(255, 255, 255, 0.2);
-  &:hover{
-    background: rgba(255, 255, 255, 0.461);
-  }
+@mixin setButton() {
+	border: none;
+	outline: none;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: $box-shadow;
+	color: white;
+	font-weight: bold;
+	background-color: rgba(255, 255, 255, 0.2);
+	&:hover {
+		background: rgba(255, 255, 255, 0.461);
+	}
 }

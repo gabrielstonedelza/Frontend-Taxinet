@@ -24,7 +24,6 @@
 	import PassengerList from "../components/passengers/PassengersList.svelte"
 	import DashboardHeader from '../components/DashboardHeader.svelte';
     import Header from '../components/Header.svelte';
-    console.log(passengerData)
 </script>
 
 <svelte:head>

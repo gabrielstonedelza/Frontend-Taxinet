@@ -1,4 +1,5 @@
 <script>
+	
 	import { fly } from 'svelte/transition';
 	export let passengerData;
 	export let driverData;
@@ -18,7 +19,7 @@
 	export let walletRequest;
 	import RequestFive from './RequestFive.svelte';
 	import InventoriesToday from './InventoriesToday.svelte';
-	import LoadWalletRequest from "./LoadWalletRequests.svelte"
+	import LoadWalletRequest from './LoadWalletRequests.svelte';
 	import addButton from '../assets/images/icons/add.png';
 </script>
 
@@ -34,7 +35,12 @@
 					<div class="usersadd" style="display: flex;justify-content:space-between;">
 						<h2>Users</h2>
 						<a href="/userregistration">
-							<img src={addButton} alt="" style="width:40px; height:40px;cursor:pointer;" title="Add new user"/>
+							<img
+								src={addButton}
+								alt=""
+								style="width:40px; height:40px;cursor:pointer;"
+								title="Add new user"
+							/>
 						</a>
 					</div>
 					<small> {usersData.length} </small>
@@ -86,8 +92,14 @@
 			<InventoriesToday {todaysInventories} />
 		</div>
 	</div>
+	<br />
 	<div class="walletRequest">
 		<div class="walletbox">
+			<div class="latestitems">
+				<div class="latestheader">
+					<h2>Wants to load wallet</h2>
+				</div>
+			</div>
 			<LoadWalletRequest {walletRequest} />
 		</div>
 	</div>
@@ -110,21 +122,17 @@
 			#debox3 {
 				border: 1px solid rgba(255, 255, 255, 0.3);
 				background: rgba(255, 255, 255, 0.2);
-				box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+				// box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+				box-shadow: $box-shadow;
 				backdrop-filter: blur(5px);
 				color: white;
-				&:hover {
-					background: rgba(255, 255, 255, 0.461);
-				}
 			}
 
 			.box {
-				background: rgba(209, 209, 209, 0.8);
-				padding: 10px;
+				@include setGlass;
 				width: 300px;
 				height: 150px;
-				box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-				border-radius: 10px;
+
 				.boxitems {
 					display: flex;
 					justify-content: space-between;
@@ -145,23 +153,17 @@
 			}
 		}
 		.latest {
-			// padding: 10px;
-			// padding: 20px;
-			padding-top: 40px;
 			display: flex;
 			justify-content: space-between;
+			padding-top: 40px;
 			gap: 1rem;
-			.latestbox1,
-			.latestbox2 {
+			.latextbox1 {
+				@include setGlass;
+				box-shadow: $box-shadow;
 				width: 50%;
 				height: auto;
-				border: 1px solid rgba(255, 255, 255, 0.3);
-				background: rgba(255, 255, 255, 0.2);
-				box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-				backdrop-filter: blur(5px);
-				border-radius: 10px;
 				.latestitems {
-					padding: 10px;
+					padding-bottom: 10px;
 					.latestheader {
 						display: flex;
 						gap: 1rem;
@@ -169,32 +171,15 @@
 						color: #fff;
 						margin-bottom: 10px;
 					}
-					.latestcontainer {
-						background: rgba(128, 128, 128, 0.403);
-						border-radius: 10px;
-						padding: 10px;
-						padding-bottom: 10px;
-						.latestcontainer1 {
-							h3 {
-								color: white;
-							}
-							small {
-								color: rgb(194, 191, 191);
-							}
-							span {
-								color: rgb(194, 191, 191);
-								padding-left: 10px;
-								padding-right: 10px;
-							}
-							cursor: pointer;
-							padding-bottom: 10px;
-						}
-					}
 				}
-				// &:hover {
-				//     background: rgba(255, 255, 255, 0.461);
-				// }
 			}
+		}
+		.walletbox {
+			padding-top: 40px;
+			@include setGlass;
+			box-shadow: $box-shadow;
+			width: 50%;
+			height: auto;
 		}
 	}
 </style>
