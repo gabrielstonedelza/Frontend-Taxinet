@@ -108,9 +108,9 @@
             <div class="navbarlink">
                 <a href="/services">Services</a>
             </div>
-            <div class="navbarlink">
+            <!-- <div class="navbarlink">
                 <a href="/about" passHref> About </a>
-            </div>
+            </div> -->
         </div>
 
         <div class="bars">
@@ -131,9 +131,9 @@
                     <div class="navbarlink">
                         <a href="/services">Services</a>
                     </div>
-                    <div class="navbarlink">
+                    <!-- <div class="navbarlink">
                         <a href="/about" passHref> About </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
