@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	export let passenger;
 	export let username;
+	export let userid;
 	export let closeLoadWalletOverlay;
 	import axios from 'axios';
 	import Spinner from '../components/Spinner.svelte';
@@ -23,7 +24,7 @@
 			url: apiUrl,
 			data: {
 				amount: amount,
-				passenger: passenger
+				passenger: userid
 			},
 			headers: { 'Content-Type': 'multipart/form-data' }
 		})

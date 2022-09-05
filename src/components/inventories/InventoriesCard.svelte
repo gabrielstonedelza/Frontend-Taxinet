@@ -3,14 +3,10 @@
 </script>
 
 <div class="schedule-card">
-	<a sveltekit:prefetch sveltekit:noscroll href={'/inventory/' + inventory.id}>
+	<a sveltekit:prefetch sveltekit:noscroll href={'/inventory_dates/' + inventory}>
 		<div class="card">
-			<!-- svelte-ignore a11y-img-redundant-alt -->
-			<img src={inventory.get_driver_profile_pic} alt="drivers profile picture" />
 			<div class="details">
-				<small>{inventory.date_checked}</small>
-				<br />
-				<small>{inventory.time_checked}</small>
+				<small>{inventory}</small>
 			</div>
 		</div>
 	</a>
@@ -25,14 +21,14 @@
 				rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
 				rgba(0, 0, 0, 0.09) 0px 32px 16px;
 			display: flex;
-			justify-content: center;
-			flex-direction: column;
+			// justify-content: center;
+			// flex-direction: column;
 			align-items: center;
 			gap: 1rem;
 			transition: all 300ms ease;
 			img {
-				width: 150px;
-				height: 150px;
+				width: 50px;
+				height: 50px;
 				object-fit: fill;
 				border-radius: 50%;
 				box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
@@ -45,7 +41,7 @@
 			.details {
 				small {
 					font-weight: bold;
-					font-size: 20px;
+					font-size: 15px;
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 <script>
-	export let driversInventories;
+	export let inventory_dates;
 	import InventoriesCard from './InventoriesCard.svelte';
 	import { fly } from 'svelte/transition';
 </script>
@@ -9,7 +9,7 @@
 	in:fly={{ y: 50, duration: 500, delay: 500 }}
 	out:fly={{ duration: 500 }}
 >
-	{#each driversInventories as inventory}
+	{#each inventory_dates as inventory}
 		<div class="box">
 			<InventoriesCard {inventory} />
 		</div>

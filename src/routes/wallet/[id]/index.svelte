@@ -27,9 +27,11 @@
 	import DashboardHeader from '../../../components/DashboardHeader.svelte';
 	import Header from '../../../components/Header.svelte';
 	import Spinner from '../../../components/Spinner.svelte';
-	let amount = '';
+	let amount;
 	let isUpdated = false;
-	amount = `${detailWallet.amount}`;
+	let oldAmount = detailWallet.amount
+	console.log(oldAmount)
+	
 	let isPosting = false;
 	const handleUpdateRequest = async () => {
 		isPosting = true;
@@ -41,7 +43,7 @@
 			method: 'PUT',
 			url: apiUrl,
 			data: {
-				amount: amount,
+				amount: parseFloat(oldAmount) + parseFloat(amount),
 				passenger: detailWallet.passenger
 			},
 			headers: { 'Content-Type': 'multipart/form-data' }
@@ -67,7 +69,7 @@
 			in:fly={{ y: 50, duration: 500, delay: 500 }}
 			out:fly={{ duration: 500 }}
 		>
-			<a href="/wallets" class="close">X</a>
+			<a href="/passengerswallets" class="close">X</a>
 			<div class="picname">
 				<img src={detailWallet.get_passenger_profile_pic} alt="" />
 				<h3>{detailWallet.get_passengers_name}</h3>
@@ -93,7 +95,7 @@
 				{/if}
 				<br />
 				{#if isUpdated}
-					<a sveltekit:reload href="/wallets">Back</a>
+					<a sveltekit:reload href="/passengerswallets">Back</a>
 				{/if}
 			</form>
 		</div>
@@ -103,6 +105,8 @@
 <style lang="scss">
 	@import '../../../styles/constant';
 	.mainbox {
+		// @include setBackground;
+		// @include setLeftMargin;
 		position: fixed;
 		width: 100%;
 		height: 100%;
@@ -113,6 +117,7 @@
 		align-items: center;
 		gap: 1rem;
 		.inventorydetailcontainer {
+		
 			.inventorybox {
 				.close {
 					cursor: pointer;

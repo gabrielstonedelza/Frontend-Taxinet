@@ -3,15 +3,17 @@
 </script>
 
 <div class="schedule-card">
-	<div class="card">
-		<!-- svelte-ignore a11y-img-redundant-alt -->
-		<img src={driver.driver_profile_pic} alt="drivers profile picture" />
-		<div class="details">
-			<small>{driver.get_drivers_full_name}</small>
-			<br />
-			<small>{driver.get_drivers_phone_number}</small>
+	<a sveltekit:prefetch sveltekit:noscroll href={'/driver/' + driver.id}>
+		<div class="card">
+			<!-- svelte-ignore a11y-img-redundant-alt -->
+			<img src={driver.driver_profile_pic} alt="drivers profile picture" />
+			<div class="details">
+				<small>{driver.get_drivers_full_name}</small>
+				<br />
+				<small>{driver.get_drivers_phone_number}</small>
+			</div>
 		</div>
-	</div>
+	</a>
 </div>
 
 <style lang="scss">

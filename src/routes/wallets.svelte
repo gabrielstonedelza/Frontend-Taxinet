@@ -1,29 +1,11 @@
-<script context="module">
-	export async function load({ fetch }) {
-		const res = await fetch('https://taxinetghana.xyz/admin_get_all_passengers_wallet/', {
-			headers: {
-				'content-type': 'application/json',
-				accept: 'application/json'
-			}
-		});
-		const pasWallets = await res.json();
 
-		if (res.ok) {
-			return {
-				props: {
-					pasWallets
-				}
-			};
-		}
-	}
-</script>
 
 <script>
-	export let pasWallets;
-	import WalletList from '../components/wallets/WalletList.svelte';
 	import DashboardHeader from '../components/DashboardHeader.svelte';
 	import Header from '../components/Header.svelte';
 	import addButton from '../assets/images/icons/add.png';
+	import passengers from '../assets/images/icons/passenger.png';
+	import drivers from '../assets/images/icons/driver.png';
 </script>
 
 <svelte:head>
@@ -32,19 +14,19 @@
 <DashboardHeader />
 
 <section class="all-schedules">
-	<div class="addandheader">
-		<a sveltekit:prefetch sveltekit:noscroll href="/passengersandwallets">
-			<img
-				src={addButton}
-				alt=""
-				style="width:40px; height:40px;cursor:pointer;"
-				title="Add to wallet"
-			/>
+	<div class="driverpassengerbox">
+		<a sveltekit:prefetch sveltekit:noscroll href="/driverswallets">
+			<div class="driverbox">
+				<img src={drivers} alt="" />
+				<h2>Drivers Wallet</h2>
+			</div>
 		</a>
-		<h3>Passengers Wallets</h3>
-	</div>
-	<div class="schedules-container">
-		<WalletList {pasWallets} />
+		<a sveltekit:prefetch sveltekit:noscroll href="/passengerswallets">
+			<div class="passengerbox">
+				<img src={passengers} alt="" />
+				<h2>Passengers Wallet</h2>
+			</div>
+		</a>
 	</div>
 </section>
 
@@ -53,24 +35,32 @@
 	.all-schedules {
 		@include setLeftMargin;
 		@include setBackground;
-		margin-left: 260px;
+		// margin-left: 260px;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
 		width: 100%;
-		padding-top: 30px;
-		.addandheader {
+		padding-top: 130px;
+		.driverpassengerbox {
 			display: flex;
-			gap: 2rem;
 			justify-content: center;
-			h3 {
-				text-align: center;
-				color: white;
-				font-size: 30px;
+			align-items: center;
+			gap: 2rem;
+			a {
+				.driverbox,.passengerbox {
+					@include setGlass;
+					display: flex;
+					flex-direction: column;
+					gap: 1rem;
+					justify-content: center;
+					align-items: center;
+					img{
+						width: 250px;
+						height: 200px;
+						object-fit: fill;
+					}
+				}
 			}
-		}
-		.schedules-container {
-			width: 50%;
 		}
 	}
 </style>

@@ -10,11 +10,10 @@
 
 		return {
 			props: {
-				passengerData,
+				passengerData
 			}
 		};
 	}
-	
 </script>
 
 <script>
@@ -31,6 +30,7 @@
 		isLoadWalletOpened = true;
 		userAddedToWallet = username;
 		userAddedToWalletId = id;
+		console.log(id);
 	};
 	const closeLoadWalletOverlay = () => {
 		isLoadWalletOpened = false;
@@ -50,10 +50,11 @@
 				<div class="box">
 					<img src={data.passenger_profile_pic} alt="" />
 					<p>{data.username}</p>
-					<button on:click={openLoadWalletOverlay(data.user, data.username)}>Load</button>
+					<button on:click={openLoadWalletOverlay(data.id, data.username)}>Load</button>
 				</div>
 				{#if isLoadWalletOpened}
 					<LoadWallet
+						userid={data.id}
 						username={userAddedToWallet}
 						passenger={userAddedToWalletId}
 						{closeLoadWalletOverlay}
@@ -69,7 +70,7 @@
 	.passengerwallet {
 		@include setBackground;
 		@include setLeftMargin;
-		margin-left: 260px;
+		// margin-left: 260px;
 		padding-top: 20px;
 		.container {
 			h3 {
@@ -100,24 +101,46 @@
 						text-transform: capitalize;
 					}
 					button {
-						font-size: 15px;
-						border: none;
-						outline: none;
-						padding-left: 20px;
-						padding-right: 20px;
-						padding-top: 12px;
-						padding-bottom: 12px;
-						border-radius: 10px;
+						background-color: #4e3f66;
+						border-radius: 8px;
+						border-width: 0;
+						color: #fff;
 						cursor: pointer;
-						box-shadow: $box-shadow;
-						color: white;
-						font-weight: bold;
-						background-color: rgba(255, 255, 255, 0.2);
-						transition: all 300ms ease;
-						&:hover {
-							background-color: rgba(119, 117, 117, 0.278);
-						}
+						display: inline-block;
+						font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+						font-size: 14px;
+						font-weight: 500;
+						line-height: 20px;
+						list-style: none;
+						margin: 0;
+						padding: 10px 12px;
+						text-align: center;
+						transition: all 200ms;
+						vertical-align: baseline;
+						white-space: nowrap;
+						user-select: none;
+						-webkit-user-select: none;
+						touch-action: manipulation;
 					}
+					// button {
+					// 	font-size: 15px;
+					// 	border: none;
+					// 	outline: none;
+					// 	padding-left: 20px;
+					// 	padding-right: 20px;
+					// 	padding-top: 12px;
+					// 	padding-bottom: 12px;
+					// 	border-radius: 10px;
+					// 	cursor: pointer;
+					// 	box-shadow: $box-shadow;
+					// 	color: white;
+					// 	font-weight: bold;
+					// 	background-color: rgba(255, 255, 255, 0.2);
+					// 	transition: all 300ms ease;
+					// 	&:hover {
+					// 		background-color: rgba(119, 117, 117, 0.278);
+					// 	}
+					// }
 				}
 			}
 		}

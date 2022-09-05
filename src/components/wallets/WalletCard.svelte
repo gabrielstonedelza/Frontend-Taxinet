@@ -9,6 +9,8 @@
 			<img src={wallet.get_passenger_profile_pic} alt="passengers profile picture" />
 			<div class="details">
 				<small>{wallet.get_passengers_name}</small>
+			<br />
+				<small>¢{wallet.amount}</small>
 			</div>
 		</div>
 	</a>

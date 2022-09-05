@@ -9,7 +9,7 @@
 	import Spinner from '../components/Spinner.svelte';
 
 	let price = '';
-	let initial_payment = '';
+	let charge = '';
 	let isPosting = false;
 	let status = '';
 	let updateSuccess = '';
@@ -26,7 +26,7 @@
 			url: apiUrl,
 			data: {
 				price: price,
-				initial_payment: initial_payment,
+				charge: charge,
 				passenger: passenger,
 				ride: detailId,
 				status: 'Active'
@@ -36,7 +36,7 @@
 			.then((response) => {
 				updateSuccess = 'Ride was updated successfully.';
 				isUpdated = true;
-			
+
 				// redirect(`/schedule/${slug}`)
 			})
 			.catch((error) => {
@@ -77,21 +77,21 @@
 					class="form__input"
 					placeholder=""
 					autocomplete="off"
-					bind:value={initial_payment}
+					bind:value={charge}
 					required
 				/>
-				<label for="initial payment" class="form__label">Intial Payment</label>
+				<label for="initial payment" class="form__label">Charge</label>
 			</div>
 			{#if isPosting}
 				<Spinner />
-			{:else}
+			{:else if !isUpdated}
 				<button class="form__button">Update</button>
 			{/if}
 			<br />
 			{#if isUpdated}
 				<p class="ridesuccess">{updateSuccess}</p>
 			{/if}
-            <br />
+			<br />
 			{#if isUpdated}
 				<a sveltekit:reload href={`/schedule/${slug}/`}>Back</a>
 			{/if}

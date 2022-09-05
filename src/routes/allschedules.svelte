@@ -16,6 +16,11 @@
 				}
 			};
 		}
+
+		return {
+			status: res.status,
+			error: new Error("Network Error ")
+		}
 	}
 </script>
 
@@ -24,6 +29,13 @@
 	import ScheduleList from '../components/ScheduleCard/ScheduleList.svelte';
 	import DashboardHeader from '../components/DashboardHeader.svelte';
     import Header from '../components/Header.svelte';
+	let requestDates = [];
+	import { fly } from 'svelte/transition';
+
+	schedules.forEach((element) => {
+		if (!requestDates.includes(element['date_scheduled']))
+			requestDates.push(element['date_scheduled']);
+	});
 </script>
 
 <svelte:head>
@@ -36,7 +48,7 @@
 >
 	<h3>All schedules</h3>
 	<div class="schedules-container">
-		<ScheduleList schedulelists={schedules} />
+		<ScheduleList {requestDates} />
 	</div>
 </section>
 
@@ -45,9 +57,11 @@
 	.all-schedules{
 		@include setLeftMargin;
 		@include setBackground;
-		margin-left: 260px;
+		// margin-left: 260px;
 		display: flex;
 		flex-direction: column;
+		align-items: start;
+		justify-content: flex-start;
 		gap: 2rem;
 		width: 100%;
 		padding-top: 30px;

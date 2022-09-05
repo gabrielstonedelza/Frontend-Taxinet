@@ -47,7 +47,6 @@
 	const closeAssignPage = () => {
 		isAssignDriverPage = false;
 	};
-	
 </script>
 
 <svelte:head>
@@ -88,7 +87,72 @@
 						{/if}
 						<button on:click={openUpdatePage}>Update Schedule</button>
 					</div>
-					<div class="detailschedule">
+					<div class="detailtable">
+						<table class="styled-table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Type</th>
+									<th>Priority</th>
+									<th>From</th>
+									<th>To</th>
+									<th>Ride</th>
+									<th>Time</th>
+									<th>Status</th>
+									<th>Date</th>
+									<th>Date Scheduled</th>
+									<th>Time Scheduled</th>
+									<th>Price</th>
+									<th>Initial payment</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										{pName}
+									</td>
+									<td>
+										{sType}
+									</td>
+									<td>
+										{sPriority}
+									</td>
+									<td>
+										{pLoc}
+									</td>
+									<td>
+										{dLoc}
+									</td>
+									<td>
+										{rType}
+									</td>
+									<td>
+										{pTime}
+									</td>
+									<td>
+										{sStatus}
+									</td>
+									<td>
+										{sDate}
+									</td>
+
+									<td>
+										{dSchedules}
+									</td>
+									<td>
+										{tScheduled.slice(0, 5)}
+									</td>
+									<td>
+										{agreedPrice}
+									</td>
+									<td>
+										{initPrice}
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- <div class="detailschedule">
 						<div class="box">
 							<p>Passenger Name: <span class="scheduleinfo">{pName}</span></p>
 							<p>Schedule Type: <span class="scheduleinfo">{sType}</span></p>
@@ -103,7 +167,7 @@
 						</div>
 						<div class="box">
 							<p>Pick up time: <span class="scheduleinfo">{pTime}</span></p>
-							<p>Start date: <span class="scheduleinfo">{dLoc}</span></p>
+							<p>Start date: <span class="scheduleinfo">{sDate}</span></p>
 						</div>
 						<div class="box">
 							<p>Status: <span class="scheduleinfo">{sStatus}</span></p>
@@ -123,7 +187,7 @@
 						<div class="description">
 							<p>Description : <span class="scheduleinfo">{sDescription}</span></p>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -132,17 +196,46 @@
 
 <style lang="scss">
 	@import '../styles/constant';
-	
 	.detailback {
 		@include setBackground;
 		.detailcontainer {
-			margin-left: 250px;
 			@include setLeftMargin;
+			margin-left: 220px;
 			.maindetailcontainer {
 				// @include setGlass;
 				display: flex;
 				gap: 2rem;
 				.details {
+					.detailtable {
+						.styled-table {
+							border-collapse: collapse;
+							margin: 18px 0;
+							font-size: 1.2rem;
+							font-family: sans-serif;
+							min-width: 100%;
+							font-weight: bold;
+							box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+							thead tr {
+								background-color: #00987a4c;
+								color: #ffffff;
+								text-align: center;
+							}
+							th,
+							td {
+								padding: 12px 10px;
+								text-align: center;
+							}
+							tr {
+								&:hover {
+									color: #ffffff;
+									background: rgba(255, 255, 255, 0.461);
+								}
+							}
+							tbody tr {
+								border-bottom: 1px solid #dddddd;
+							}
+						}
+					}
 					.detailsheader {
 						display: flex;
 						align-items: center;
@@ -154,7 +247,26 @@
 							color: $primary-color;
 						}
 						button {
-							@include setButton;
+							background-color: #4e3f66;
+							border-radius: 8px;
+							border-width: 0;
+							color: #fff;
+							cursor: pointer;
+							display: inline-block;
+							font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+							font-size: 14px;
+							font-weight: 500;
+							line-height: 20px;
+							list-style: none;
+							margin: 0;
+							padding: 10px 12px;
+							text-align: center;
+							transition: all 200ms;
+							vertical-align: baseline;
+							white-space: nowrap;
+							user-select: none;
+							-webkit-user-select: none;
+							touch-action: manipulation;
 						}
 						img {
 							border-radius: 50%;

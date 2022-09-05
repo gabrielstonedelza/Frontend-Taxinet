@@ -45,7 +45,7 @@
 	.all-schedules{
 		@include setLeftMargin;
 		@include setBackground;
-		margin-left: 260px;
+		// margin-left: 260px;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;

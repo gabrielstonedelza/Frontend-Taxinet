@@ -158,6 +158,15 @@
 		);
 		const walletRequest = await requestToLoadWallet.json();
 
+		// drivers wallet
+		const res1 = await fetch('https://taxinetghana.xyz/admin_get_all_drivers_request_to_load_wallet/', {
+			headers: {
+				'content-type': 'application/json',
+				accept: 'application/json'
+			}
+		});
+		const driversWallet = await res1.json();
+
 		return {
 			props: {
 				passengerData,
@@ -175,7 +184,8 @@
 				latestData,
 				driversInventories,
 				todaysInventories,
-				walletRequest
+				walletRequest,
+				driversWallet
 			}
 		};
 	}
@@ -201,6 +211,8 @@
 	export let driversInventories;
 	export let todaysInventories;
 	export let walletRequest;
+	export let driversWallet;
+
 
 	import DashboardData1 from '../components/DashboardData1.svelte';
 
@@ -232,18 +244,13 @@
 		{driversInventories}
 		{todaysInventories}
 		{walletRequest}
+		{driversWallet}
 	/>
 </section>
 
 <style lang="scss">
 	.dashboardback {
-		background-color: #ff3cac;
-		background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
-
-		// background: url('../assets/images/6455.png');
-		// background-size: cover;
-		// background-position: center;
-		// background-attachment: fixed;
+		background-color: #293454;
 		width: 100%;
 		height: 100%;
 		position: fixed;

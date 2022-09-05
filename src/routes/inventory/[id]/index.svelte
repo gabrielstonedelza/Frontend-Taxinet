@@ -9,6 +9,7 @@
 				}
 			}
 		);
+		
 		const inventoryDetails = await res.json();
 
 		if (res.ok) {
@@ -50,6 +51,12 @@
 				<!-- <br /> -->
 				<small>{inventoryDetails.date_checked}</small> /
 				<small>{inventoryDetails.time_checked.slice(0, 8)}</small>
+				<br/>
+				<small>Unique Number: {inventoryDetails.unique_number}</small> /
+				<small>Unique Number: {inventoryDetails.registration_number}</small>
+				<br/>
+				<small>Brand: {inventoryDetails.vehicle_brand}</small> /
+				<small>Millage: {inventoryDetails.millage}</small>
 			</div>
 		</div>
 		<div class="inventory-list">
@@ -61,6 +68,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					                         
 					<tr>
 						<td>Windscreen</td>
 						<td>
@@ -381,12 +389,8 @@
 <style lang="scss">
 	@import '../../../styles/constant';
 	.inventorydetailcontainer {
-		background-color: #ff3cac;
-		background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
-		// background: url('../../../assets/images/Animated1.svg');
-		// background-size: cover;
-		// background-position: center;
-		// background-attachment: fixed;
+		background-color: #4e3f66;
+	
 		width: 100%;
 		height: 100%;
 		position: fixed;
@@ -395,10 +399,11 @@
 		.inventorybox {
 			// width: 70%;
 			@include setLeftMargin;
-			@include setGlass;
+			// @include setGlass;
 			padding-top: 50px;
 			margin-right: 120px;
 			margin-top: 30px;
+			color: #ffffff;
 			.imagename {
 				display: flex;
 				gap: 1rem;
@@ -428,6 +433,7 @@
 					min-width: 80%;
 					font-weight: bold;
 					box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+					color: #ffffff;
 					thead tr {
 						background-color: #009879;
 						color: #ffffff;

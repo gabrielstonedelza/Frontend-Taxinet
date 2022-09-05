@@ -18,7 +18,7 @@
 		isPosting = true;
 		setTimeout(function () {
 			isPosting = false;
-		}, 2500);
+		}, 4500);
 		const apiUrl = 'https://taxinetghana.xyz/auth/token/login/';
 		axios({
 			method: 'POST',

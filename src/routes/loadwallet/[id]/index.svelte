@@ -33,19 +33,22 @@
 <section class="loadwalletcontainer">
 	<div class="walletbox" in:fly={{ y: 50, duration: 500, delay: 500 }} out:fly={{ duration: 500 }}>
 		<img src={loadWalletDetail.get_passenger_profile_pic} alt="" />
-		<h3>{loadWalletDetail.get_passengers_name}</h3>
-		<p>
-			{loadWalletDetail.get_passengers_name} is requesting an amount of ¢{loadWalletDetail.get_amount}
-			to be transferred into wallet.
-		</p>
+		<div class="details">
+			<h3>{loadWalletDetail.get_passengers_name}</h3>
+			<p>
+				{loadWalletDetail.get_passengers_name} is requesting an amount of ¢{loadWalletDetail.get_amount}
+				to be transferred into wallet.
+			</p>
+			<br />
+			<a href="/wallets">Go to wallets</a>
+		</div>
 	</div>
 </section>
 
 <style lang="scss">
 	@import '../../../styles/constant';
 	.loadwalletcontainer {
-		background-color: #ff3cac;
-		background-image: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+		background-color: #293454;
 		width: 100%;
 		height: 100%;
 		position: fixed;
@@ -57,7 +60,7 @@
 			margin-top: 10%;
 			margin-left: 30%;
 			display: flex;
-			flex-direction: column;
+			// flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			gap: 1rem;
@@ -66,15 +69,40 @@
 			img {
 				width: 150px;
 				height: 150px;
-				border-radius: 50%;
+				border-radius: 10px;
 				box-shadow: $box-shadow;
 			}
-			h3 {
-				text-transform: capitalize;
-				font-size: 25px;
-			}
-			p {
-				font-size: 20px;
+			.details {
+				h3 {
+					text-transform: capitalize;
+					font-size: 25px;
+				}
+				p {
+					font-size: 20px;
+				}
+
+				a {
+					background-color: #4E3F66;
+					border-radius: 8px;
+					border-width: 0;
+					color: #fff;
+					cursor: pointer;
+					display: inline-block;
+					font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+					font-size: 14px;
+					font-weight: 500;
+					line-height: 20px;
+					list-style: none;
+					margin: 0;
+					padding: 10px 12px;
+					text-align: center;
+					transition: all 200ms;
+					vertical-align: baseline;
+					white-space: nowrap;
+					user-select: none;
+					-webkit-user-select: none;
+					touch-action: manipulation;
+				}
 			}
 		}
 	}

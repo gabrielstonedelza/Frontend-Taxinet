@@ -1,12 +1,13 @@
 <script>
-	import dashboard from '../assets/images/icons/dashboard.png';
-	import requests from '../assets/images/icons/sedan.png';
-	import passengers from '../assets/images/icons/passenger.png';
-	import drivers from '../assets/images/icons/driver.png';
+	import dashboard from '../assets/images/dashboard.png';
+	import requests from '../assets/images/sedan.png';
+	import passengers from '../assets/images/passenger.png';
+	import drivers from '../assets/images/driving.png';
 	import investors from '../assets/images/icons/investor.png';
-	import inventory from '../assets/images/icons/checklists.png';
-	import wallet from '../assets/images/icons/wallet.png';
+	import inventory from '../assets/images/clipboard.png';
+	import wallet from '../assets/images/wallet.png';
 	import cab from '../assets/images/taxinet_cab.png';
+	import car from "../assets/images/car.png"
 </script>
 
 <section class="dheader">
@@ -20,7 +21,7 @@
 							<td>
 								<img src={cab} alt="" />
 							</td>
-							<td>Taxinet</td>
+							<!-- <td>Taxinet</td> -->
 						</tr>
 					</a>
 				</table>
@@ -29,10 +30,10 @@
 			<div class="menulinks">
 				<table>
 					<div class="navbarlink">
-						<a href="/dashboard">
+						<a href="/dashboard" title="Dashboard">
 							<tr>
 								<td><img src={dashboard} alt="" /></td>
-								<td>Dashboard</td>
+								<td class="onhover">Dashboard</td>
 							</tr>
 						</a>
 					</div>
@@ -40,7 +41,7 @@
 						<a href="/allschedules">
 							<tr>
 								<td><img src={requests} alt="" /></td>
-								<td>Requests</td>
+								<td class="onhover">Requests</td>
 							</tr>
 						</a>
 					</div>
@@ -48,7 +49,7 @@
 						<a href="/passengers">
 							<tr>
 								<td><img src={passengers} alt="" /></td>
-								<td>Passengers</td>
+								<td class="onhover">Passengers</td>
 							</tr>
 						</a>
 					</div>
@@ -56,7 +57,7 @@
 						<a href="/drivers">
 							<tr>
 								<td><img src={drivers} alt="" /></td>
-								<td>Drivers</td>
+								<td class="onhover">Drivers</td>
 							</tr>
 						</a>
 					</div>
@@ -64,7 +65,7 @@
 						<a href="/inventories">
 							<tr>
 								<td><img src={inventory} alt="" /></td>
-								<td>Inventories</td>
+								<td class="onhover">Inventories</td>
 							</tr>
 						</a>
 					</div>
@@ -72,7 +73,15 @@
 						<a href="/wallets">
 							<tr>
 								<td><img src={wallet} alt="" /></td>
-								<td>Wallets</td>
+								<td class="onhover">Wallets</td>
+							</tr>
+						</a>
+					</div>
+					<div class="navbarlink">
+						<a href="/vehicles">
+							<tr>
+								<td><img src={car} alt="" /></td>
+								<td class="onhover">Vehicles</td>
 							</tr>
 						</a>
 					</div>
@@ -86,16 +95,14 @@
 	@import '../styles/constant';
 	.dheader {
 		.dashboardcontainer {
-			// background-color: #4158d0;
-			// background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
-			background-color: #ff3cac;
-			background-image: linear-gradient(120deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);
+
+			background-color: #4E3F66;
 
 			height: 100%;
 			overflow-y: auto;
 			overflow-x: hidden;
 			position: fixed;
-			width: 260px;
+			width: 110px;
 			color: #fff;
 			z-index: 2;
 			
@@ -143,31 +150,42 @@
 							font-weight: bold;
 							transition: 1s ease;
 							color: white !important;
-							&:hover {
-								border: solid 1px silver;
-								border-radius: 15px;
-								//   padding-left: 5px;
-								background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
-								width: 100%;
-								display: flex;
-							}
+						
 							.navlinks {
 								display: flex;
 								align-items: center;
 								gap: 1rem;
 							}
 							a {
+								display: flex;
 								tr {
 									display: flex;
-									align-items: center;
-									justify-content: center;
-									gap: 2rem;
+									// align-items: center;
+									// justify-content: center;
+									flex-direction: column;
+									gap: 1rem;
 									td {
+										text-align: center;
+										display: flex;
+										// justify-content: center;
+										// align-items: center;
 										color: white;
 										img {
 											width: 30px;
 											height: 30px;
 										}
+										transition: all 300ms ease;
+									}
+									.onhover{
+										font-size: 15px;
+										
+										
+										display: none;
+									}
+								}
+								&:hover{
+									.onhover{
+										display: block;
 									}
 								}
 							}

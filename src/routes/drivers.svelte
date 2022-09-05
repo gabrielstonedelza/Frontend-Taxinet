@@ -24,7 +24,6 @@
 	import DriversList from "../components/drivers/DriversLists.svelte"
 	import DashboardHeader from '../components/DashboardHeader.svelte';
     import Header from '../components/Header.svelte';
-    console.log(driversData)
 </script>
 
 <svelte:head>
@@ -46,7 +45,7 @@
 	.all-schedules{
 		@include setLeftMargin;
 		@include setBackground;
-		margin-left: 260px;
+		// margin-left: 260px;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
