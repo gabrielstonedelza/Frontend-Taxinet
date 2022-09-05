@@ -22,7 +22,7 @@
 
 <script>
 	export let driversWallet;
-	import WalletList from '../components/driverswallet/WalletList.svelte';
+	import WalletList from '../components/driverswallet/Walletlist.svelte';
 	import DashboardHeader from '../components/DashboardHeader.svelte';
 	import Header from '../components/Header.svelte';
 	import addButton from '../assets/images/icons/add.png';
