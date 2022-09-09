@@ -27,7 +27,7 @@
 		const allScheduledRequests = await fetch('https://taxinetghana.xyz/admin_get_all_requests/', {
 			headers: {
 				'content-type': 'application/json',
-				accept: 'application/json',
+				accept: 'application/json'
 			}
 		});
 		const schedules = await allScheduledRequests.json();
@@ -37,7 +37,8 @@
 				props: {
 					scheduleDetail,
 					allDrivers,
-					allAssignedDrivers,schedules
+					allAssignedDrivers,
+					schedules
 				}
 			};
 		}
@@ -49,7 +50,7 @@
 	export let scheduleDetail;
 	export let allDrivers;
 	export let allAssignedDrivers;
-	export let schedules
+	export let schedules;
 	import { fly } from 'svelte/transition';
 	import RequestDetail from '../../components/RequestDetail.svelte';
 </script>
@@ -73,7 +74,7 @@
 		sStatus={scheduleDetail.status}
 		dSchedules={scheduleDetail.date_scheduled}
 		agreedPrice={scheduleDetail.price}
-		initPrice={scheduleDetail.initial_payment}
+		charge={scheduleDetail.charge}
 		tScheduled={scheduleDetail.time_scheduled}
 		sDescription={scheduleDetail.schedule_description}
 		slug={scheduleDetail.slug}

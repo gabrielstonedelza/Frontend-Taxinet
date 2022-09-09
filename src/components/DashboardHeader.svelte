@@ -96,7 +96,7 @@
 	.dheader {
 		.dashboardcontainer {
 
-			background-color: #4E3F66;
+			background-color: #0a0a0a;
 
 			height: 100%;
 			overflow-y: auto;
@@ -137,7 +137,7 @@
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
-					// align-items: start;
+					
 					padding: 20px;
 					table {
 						.navbarlink {
@@ -148,7 +148,7 @@
 							padding: 15px;
 							font-size: 20px;
 							font-weight: bold;
-							transition: 1s ease;
+							transition: all 300ms ease;
 							color: white !important;
 						
 							.navlinks {
@@ -158,6 +158,7 @@
 							}
 							a {
 								display: flex;
+								transition: all 300ms ease;
 								tr {
 									display: flex;
 									// align-items: center;
@@ -178,8 +179,6 @@
 									}
 									.onhover{
 										font-size: 15px;
-										
-										
 										display: none;
 									}
 								}

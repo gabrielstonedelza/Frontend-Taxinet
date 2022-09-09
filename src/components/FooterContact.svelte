@@ -37,7 +37,7 @@
 				<img src={mail} alt="" /> taxinetghana@gmail.com
 			</div>
 			<div class="contact-box">
-				<img src={phone} alt="" /> +233 271020030 | 233 2444950505
+				<img src={phone} alt="" /> +233 271020030 | 233 244950505
 			</div>
 			<div class="contact-box">
 				<a href="www.facebook.com">Privacy</a>

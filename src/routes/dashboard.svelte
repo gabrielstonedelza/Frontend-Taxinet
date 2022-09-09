@@ -250,7 +250,7 @@
 
 <style lang="scss">
 	.dashboardback {
-		background-color: #293454;
+		background-color: #0a0a0a;
 		width: 100%;
 		height: 100%;
 		position: fixed;

@@ -17,7 +17,7 @@
 	export let sStatus;
 	export let slug;
 	export let detailId;
-	export let initPrice;
+	export let charge;
 	export let agreedPrice;
 	export let allDrivers;
 	export let allAssignedDrivers;
@@ -103,7 +103,7 @@
 									<th>Date Scheduled</th>
 									<th>Time Scheduled</th>
 									<th>Price</th>
-									<th>Initial payment</th>
+									<th>Charge</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -146,7 +146,7 @@
 										{agreedPrice}
 									</td>
 									<td>
-										{initPrice}
+										{charge}
 									</td>
 								</tr>
 							</tbody>
@@ -200,7 +200,7 @@
 		@include setBackground;
 		.detailcontainer {
 			@include setLeftMargin;
-			margin-left: 220px;
+			// margin-left: 220px;
 			.maindetailcontainer {
 				// @include setGlass;
 				display: flex;
@@ -216,7 +216,7 @@
 							font-weight: bold;
 							box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 							thead tr {
-								background-color: #00987a4c;
+								background-color: #0000004c;
 								color: #ffffff;
 								text-align: center;
 							}
@@ -247,10 +247,10 @@
 							color: $primary-color;
 						}
 						button {
-							background-color: #4e3f66;
+							background-color: #EABD07;
 							border-radius: 8px;
 							border-width: 0;
-							color: #fff;
+							color: #000;
 							cursor: pointer;
 							display: inline-block;
 							font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;

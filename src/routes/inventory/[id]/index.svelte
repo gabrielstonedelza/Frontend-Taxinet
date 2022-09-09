@@ -389,7 +389,7 @@
 <style lang="scss">
 	@import '../../../styles/constant';
 	.inventorydetailcontainer {
-		background-color: #4e3f66;
+		background-color: #191B1F;
 	
 		width: 100%;
 		height: 100%;
@@ -435,7 +435,7 @@
 					box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 					color: #ffffff;
 					thead tr {
-						background-color: #009879;
+						background-color: #02020270;
 						color: #ffffff;
 						text-align: left;
 					}

@@ -101,10 +101,10 @@
 						text-transform: capitalize;
 					}
 					button {
-						background-color: #4e3f66;
+						background-color: #EABD07;
 						border-radius: 8px;
 						border-width: 0;
-						color: #fff;
+						color: #000;
 						cursor: pointer;
 						display: inline-block;
 						font-family: 'Haas Grot Text R Web', 'Helvetica Neue', Helvetica, Arial, sans-serif;
