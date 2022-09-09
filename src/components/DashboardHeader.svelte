@@ -8,6 +8,7 @@
 	import wallet from '../assets/images/wallet.png';
 	import cab from '../assets/images/taxinet_cab.png';
 	import car from "../assets/images/car.png"
+	import payment from "../assets/images/pay.png";
 </script>
 
 <section class="dheader">
@@ -82,6 +83,14 @@
 							<tr>
 								<td><img src={car} alt="" /></td>
 								<td class="onhover">Vehicles</td>
+							</tr>
+						</a>
+					</div>
+					<div class="navbarlink">
+						<a href="/payments">
+							<tr>
+								<td><img src={payment} alt="" /></td>
+								<td class="onhover">Payments</td>
 							</tr>
 						</a>
 					</div>
