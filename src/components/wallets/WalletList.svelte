@@ -1,5 +1,5 @@
 <script>
-	export let pasWallets;
+	export let allWallets;
 	import WalletCard from './WalletCard.svelte';
 	import { fly } from 'svelte/transition';
 </script>
@@ -9,7 +9,7 @@
 	in:fly={{ y: 50, duration: 500, delay: 500 }}
 	out:fly={{ duration: 500 }}
 >
-	{#each pasWallets as wallet}
+	{#each allWallets as wallet}
 		<div class="box">
 			<WalletCard {wallet} />
 		</div>
@@ -19,11 +19,12 @@
 <style lang="scss">
 	@import '../../styles/constant';
 	.passengers-lists-container {
+		padding-left: 20px;
+		padding-right: 30px;
+		width: 90%;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-		justify-content:center;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		gap: 1rem;
-		.box {
-		}
+		
 	}
 </style>

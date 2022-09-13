@@ -21,6 +21,7 @@
 	@import '../../styles/constant';
 	.schedule-lists-container {
 		// @include setGlass;
+		
 		.box {
 			// display: flex;
 		}

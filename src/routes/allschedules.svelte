@@ -60,10 +60,8 @@
 		// margin-left: 260px;
 		display: flex;
 		flex-direction: column;
-		align-items: start;
-		justify-content: flex-start;
 		gap: 2rem;
-		width: 100%;
+		// width: 90%;
 		padding-top: 30px;
 		h3{ 
 			text-align: center;

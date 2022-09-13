@@ -49,16 +49,14 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
-		width: 100%;
+		// width: 90%;
 		padding-top: 30px;
 		h3{ 
 			text-align: center;
 			color: white;
 			font-size: 30px;
 		}
-		.schedules-container{
-			width: 50%;
-		}
+	
 	}
 
 </style>

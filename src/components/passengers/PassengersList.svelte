@@ -21,9 +21,11 @@
 <style lang="scss">
 	@import '../../styles/constant';
 	.passengers-lists-container {
+		padding-left: 20px;
+		padding-right: 30px;
+		width: 90%;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		justify-content:center;
 		gap: 1rem;
 		.box {
 		}

@@ -1,4 +1,23 @@
+<script context="module">
+	export async function load({ fetch }) {
+		// drivers wallet
+		const res1 = await fetch('https://taxinetghana.xyz/admin_get_all_users_wallet/', {
+			headers: {
+				'content-type': 'application/json',
+				accept: 'application/json'
+			}
+		});
+		const allWallets = await res1.json();
 
+		if (res1.ok) {
+			return {
+				props: {
+					allWallets
+				}
+			};
+		}
+	}
+</script>
 
 <script>
 	import DashboardHeader from '../components/DashboardHeader.svelte';
@@ -6,6 +25,8 @@
 	import addButton from '../assets/images/icons/add.png';
 	import passengers from '../assets/images/icons/passenger.png';
 	import drivers from '../assets/images/icons/driver.png';
+	import WalletList from '../components/wallets/WalletList.svelte';
+	export let allWallets;
 </script>
 
 <svelte:head>
@@ -14,53 +35,24 @@
 <DashboardHeader />
 
 <section class="all-schedules">
-	<div class="driverpassengerbox">
-		<a sveltekit:prefetch sveltekit:noscroll href="/driverswallets">
-			<div class="driverbox">
-				<img src={drivers} alt="" />
-				<h2>Drivers Wallet</h2>
-			</div>
-		</a>
-		<a sveltekit:prefetch sveltekit:noscroll href="/passengerswallets">
-			<div class="passengerbox">
-				<img src={passengers} alt="" />
-				<h2>Passengers Wallet</h2>
-			</div>
-		</a>
+	<h3>Wallets</h3>
+<br>
+	<div class="schedules-container">
+		<WalletList {allWallets} />
 	</div>
 </section>
 
 <style lang="scss">
 	@import '../styles/constant';
-	.all-schedules {
+	.all-schedules{
 		@include setLeftMargin;
 		@include setBackground;
-		// margin-left: 260px;
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		width: 100%;
-		padding-top: 130px;
-		.driverpassengerbox {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 2rem;
-			a {
-				.driverbox,.passengerbox {
-					@include setGlass;
-					display: flex;
-					flex-direction: column;
-					gap: 1rem;
-					justify-content: center;
-					align-items: center;
-					img{
-						width: 250px;
-						height: 200px;
-						object-fit: fill;
-					}
-				}
-			}
+		padding-top: 30px;
+		h3{ 
+			text-align: center;
+			color: white;
+			font-size: 30px;
 		}
+	
 	}
 </style>

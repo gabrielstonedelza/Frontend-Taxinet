@@ -38,7 +38,7 @@
 <DashboardHeader />
 
 <section class="all-schedules">
-	<h3>Drivers Inventories</h3>
+	<h3>Drivers Payments</h3>
 	<div class="schedules-container">
 		<PaymentList {paid_dates} />
 	</div>
@@ -53,7 +53,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
-		width: 100%;
+		// width: 90%;
 		padding-top: 30px;
 		h3 {
 			text-align: center;

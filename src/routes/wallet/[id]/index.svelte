@@ -1,6 +1,6 @@
 <script context="module">
 	export async function load({ fetch, params }) {
-		const res = await fetch(`https://taxinetghana.xyz/wallet_detail/${params.id}/`, {
+		const res = await fetch(`https://taxinetghana.xyz/user_wallet_detail/${params.id}/`, {
 			headers: {
 				'content-type': 'application/json',
 				accept: 'application/json'
@@ -31,6 +31,7 @@
 	let isUpdated = false;
 	let oldAmount = detailWallet.amount
 	console.log(oldAmount)
+	console.log(detailWallet)
 	
 	let isPosting = false;
 	const handleUpdateRequest = async () => {
@@ -38,13 +39,13 @@
 		setTimeout(function () {
 			isPosting = false;
 		}, 2500);
-		const apiUrl = `https://taxinetghana.xyz/update_wallet/${detailWallet.id}/`;
+		const apiUrl = `https://taxinetghana.xyz/admin_update_wallet/${detailWallet.id}/`;
 		axios({
 			method: 'PUT',
 			url: apiUrl,
 			data: {
 				amount: parseFloat(oldAmount) + parseFloat(amount),
-				passenger: detailWallet.passenger
+				user: detailWallet.user
 			},
 			headers: { 'Content-Type': 'multipart/form-data' }
 		})
@@ -58,7 +59,7 @@
 </script>
 
 <svelte:head>
-	<title>Taxinet | {detailWallet.get_passengers_name}</title>
+	<title>Taxinet | {detailWallet.get_full_name}</title>
 </svelte:head>
 <DashboardHeader />
 
@@ -69,10 +70,10 @@
 			in:fly={{ y: 50, duration: 500, delay: 500 }}
 			out:fly={{ duration: 500 }}
 		>
-			<a href="/passengerswallets" class="close">X</a>
+			<a href="/wallets" class="close">X</a>
 			<div class="picname">
-				<img src={detailWallet.get_passenger_profile_pic} alt="" />
-				<h3>{detailWallet.get_passengers_name}</h3>
+				<img src={detailWallet.get_profile_pic} alt="" />
+				<h3>{detailWallet.get_full_name}</h3>
 			</div>
 
 			<form class="form" on:submit|preventDefault={handleUpdateRequest}>
@@ -95,7 +96,7 @@
 				{/if}
 				<br />
 				{#if isUpdated}
-					<a sveltekit:reload href="/passengerswallets">Back</a>
+					<a sveltekit:reload href="/wallets">Back</a>
 				{/if}
 			</form>
 		</div>

@@ -30,9 +30,9 @@
 			gap: 1rem;
 			transition: all 300ms ease;
 			img {
-				width: 50px;
-				height: 50px;
-				object-fit: fill;
+				width: 80px;
+				height: 80px;
+				object-fit: cover;
 				border-radius: 50%;
 				box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
 					rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
